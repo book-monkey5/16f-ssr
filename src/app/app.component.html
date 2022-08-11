@@ -1,0 +1,15 @@
+<nav>
+  <a routerLink="/home" routerLinkActive="active" ariaCurrentWhenActive="page">Home</a>
+  <a routerLink="/books" routerLinkActive="active" ariaCurrentWhenActive="page">Books</a>
+  <a routerLink="/admin" routerLinkActive="active" ariaCurrentWhenActive="page">Administration</a>
+  <button class="green"
+    (click)="auth.login()"
+    *ngIf="!auth.isAuthenticated">Login</button>
+  <button class="red"
+    (click)="auth.logout()"
+    *ngIf="auth.isAuthenticated">Logout</button>
+</nav>
+
+<main>
+  <router-outlet></router-outlet>
+</main>

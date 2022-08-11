@@ -1,0 +1,51 @@
+<form [formGroup]="form" (ngSubmit)="submitForm()">
+  <label for="title">Title</label>
+  <input id="title" formControlName="title">
+  <bm-form-errors
+    controlName="title"
+    [messages]="{ required: 'Title is required' }">
+  </bm-form-errors>
+
+  <label for="subtitle">Subtitle</label>
+  <input id="subtitle" formControlName="subtitle">
+
+  <label for="isbn">ISBN</label>
+  <input id="isbn" formControlName="isbn">
+  <bm-form-errors
+    controlName="isbn"
+    [messages]="{
+      required: 'ISBN is required',
+      isbnformat: 'ISBN must have 10 or 13 chars',
+      isbnexists: 'ISBN already exists'
+    }">
+  </bm-form-errors>
+
+  <label>Authors</label>
+  <button type="button" class="add"
+    (click)="addAuthorControl()">
+    + Author
+  </button>
+  <fieldset formArrayName="authors">
+    <input
+      *ngFor="let a of authors.controls; index as i"
+      [attr.aria-label]="'Author ' + i"
+      [formControlName]="i">
+  </fieldset>
+  <bm-form-errors
+    controlName="authors"
+    [messages]="{ atleastonevalue: 'At least one author required' }">
+  </bm-form-errors>
+
+  <label for="description">Description</label>
+  <textarea id="description" formControlName="description"></textarea>
+
+  <label for="published">Published</label>
+  <input type="date" useValueAsLocalIso id="published" formControlName="published">
+
+  <label for="thumbnailUrl">Thumbnail URL</label>
+  <input type="url" id="thumbnailUrl" formControlName="thumbnailUrl">
+
+  <button type="submit" [disabled]="form.invalid">
+    Save
+  </button>
+</form>

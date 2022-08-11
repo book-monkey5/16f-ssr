@@ -1,0 +1,13 @@
+<a *ngIf="book" [routerLink]="book.isbn">
+  <img *ngIf="book.thumbnailUrl" [src]="book.thumbnailUrl" alt="Cover">
+  <h2>{{ book.title }}</h2>
+  <p role="doc-subtitle" *ngIf="book.subtitle">
+    {{ book.subtitle }}
+  </p>
+  <ul class="comma-list">
+    <li *ngFor="let author of book.authors">
+      {{ author }}
+    </li>
+  </ul>
+  <div>ISBN {{ book.isbn | isbn }}</div>
+</a>
