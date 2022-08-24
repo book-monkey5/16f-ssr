@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { AuthService } from './shared/auth.service';
-import { Book } from './shared/book';
 
 @Component({
   selector: 'bm-root',
