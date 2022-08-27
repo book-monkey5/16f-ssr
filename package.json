@@ -26,7 +26,7 @@
     "@angular/router": "^14.1.0",
     "@nguniversal/express-engine": "^14.0.3",
     "angular-date-value-accessor": "^2.0.1",
-    "book-monkey-styles": "^0.12.0",
+    "book-monkey-styles": "^0.13.3",
     "express": "^4.15.2",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
