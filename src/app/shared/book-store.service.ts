@@ -25,8 +25,8 @@ export class BookStoreService {
     return this.http.get<Book>(`${this.apiUrl}/books/${isbn}`);
   }
 
-  remove(isbn: string): Observable<string> {
-    return this.http.delete(`${this.apiUrl}/books/${isbn}`, { responseType: 'text' });
+  remove(isbn: string): Observable<unknown> {
+    return this.http.delete(`${this.apiUrl}/books/${isbn}`);
   }
 
   getAllSearch(term: string): Observable<Book[]> {
