@@ -56,7 +56,7 @@ export class BookFormComponent implements OnChanges {
   }
 
   private setEditMode(isEditing: boolean) {
-    const isbnControl = this.form.get('isbn')!;
+    const isbnControl = this.form.controls.isbn;
 
     if (isEditing) {
       isbnControl.disable();
@@ -73,7 +73,7 @@ export class BookFormComponent implements OnChanges {
   }
 
   get authors() {
-    return this.form.get('authors') as FormArray<FormControl<string>>;
+    return this.form.controls.authors;
   }
 
   addAuthorControl() {
