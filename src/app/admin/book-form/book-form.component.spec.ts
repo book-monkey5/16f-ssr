@@ -11,9 +11,7 @@ describe('BookFormComponent', () => {
       declarations: [ BookFormComponent ]
     })
     .compileComponents();
-  });
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(BookFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

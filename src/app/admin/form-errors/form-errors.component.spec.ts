@@ -11,9 +11,7 @@ describe('FormErrorsComponent', () => {
       declarations: [ FormErrorsComponent ]
     })
     .compileComponents();
-  });
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(FormErrorsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
