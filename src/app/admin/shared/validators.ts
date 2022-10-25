@@ -1,4 +1,4 @@
-import { FormArray, ValidatorFn } from '@angular/forms';
+import { isFormArray, ValidatorFn } from '@angular/forms';
 
 export const isbnFormat: ValidatorFn = function(control) {
   if (!control.value || typeof control.value !== 'string') {
@@ -16,7 +16,7 @@ export const isbnFormat: ValidatorFn = function(control) {
 }
 
 export const atLeastOneValue: ValidatorFn = function(control) {
-  if (!(control instanceof FormArray)) {
+  if (!isFormArray(control)) {
     return null;
   }
 
