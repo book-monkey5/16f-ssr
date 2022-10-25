@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { LocalIsoDateValueAccessorModule } from 'angular-date-value-accessor';
+import { LocalIsoDateValueAccessor } from 'angular-date-value-accessor';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { BookFormComponent } from './book-form/book-form.component';
@@ -20,7 +20,7 @@ import { FormErrorsComponent } from './form-errors/form-errors.component';
     CommonModule,
     AdminRoutingModule,
     ReactiveFormsModule,
-    LocalIsoDateValueAccessorModule
+    LocalIsoDateValueAccessor
   ],
 })
 export class AdminModule { }

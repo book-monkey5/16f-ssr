@@ -25,7 +25,7 @@
     "@angular/platform-server": "^14.2.0",
     "@angular/router": "^14.2.0",
     "@nguniversal/express-engine": "^14.2.0",
-    "angular-date-value-accessor": "^2.0.1",
+    "angular-date-value-accessor": "^2.1.0",
     "book-monkey5-styles": "^1.0.1",
     "express": "^4.15.2",
     "rxjs": "~7.5.0",
