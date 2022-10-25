@@ -16,6 +16,9 @@ MIT
 angular-date-value-accessor
 MIT
 
+book-monkey5-styles
+MIT
+
 rxjs
 Apache-2.0
                                Apache License
