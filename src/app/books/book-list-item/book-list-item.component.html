@@ -1,4 +1,4 @@
-<a *ngIf="book" [routerLink]="book.isbn">
+<a *ngIf="book" [routerLink]="book.isbn" class="list-item">
   <img *ngIf="book.thumbnailUrl" [src]="book.thumbnailUrl" alt="Cover">
   <h2>{{ book.title }}</h2>
   <p role="doc-subtitle" *ngIf="book.subtitle">
