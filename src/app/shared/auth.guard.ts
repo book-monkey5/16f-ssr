@@ -1,40 +1,35 @@
-import { Injectable } from '@angular/core';
-import { CanActivate, Router, UrlTree } from '@angular/router';
-import { Observable, map, take } from 'rxjs';
+import { inject } from '@angular/core';
+import { CanActivateFn, Router } from '@angular/router';
+import { map, take } from 'rxjs';
 
 import { AuthService } from './auth.service';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class AuthGuard implements CanActivate {
+export const authGuard: CanActivateFn = () => {
+  const authService = inject(AuthService);
+  const router = inject(Router);
 
-  constructor(private authService: AuthService, private router: Router) {}
-
-  canActivate(): boolean | UrlTree {
-    if (this.authService.isAuthenticated) {
-      return true;
-    } else {
-      window.alert('Not logged in!');
-      return this.router.parseUrl('/home');
-    }
+  if (authService.isAuthenticated) {
+    return true;
+  } else {
+    window.alert('Not logged in!');
+    return router.parseUrl('/home');
   }
+};
 
-  /*
-  // Alternative Lösung mit Observable:
-  canActivate(): Observable<boolean | UrlTree> {
-    return this.authService.isAuthenticated$.pipe(
-      take(1),
-      map(isAuthenticated => {
-        if (isAuthenticated) {
-          return true;
-        } else {
-          window.alert('Not logged in!');
-          return this.router.parseUrl('/home');
-        }
-      })
-    );
-  }
-  */
+// Alternative Lösung mit Observable
+export const authGuardAlternative: CanActivateFn = () => {
+  const authService = inject(AuthService);
+  const router = inject(Router);
 
-}
+  return authService.isAuthenticated$.pipe(
+    take(1),
+    map(isAuthenticated => {
+      if (isAuthenticated) {
+        return true;
+      } else {
+        window.alert('Not logged in!');
+        return router.parseUrl('/home');
+      }
+    })
+  );
+};
