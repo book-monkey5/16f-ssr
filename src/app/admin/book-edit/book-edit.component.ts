@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { map, switchMap } from 'rxjs';
+import { map, Observable, switchMap } from 'rxjs';
 
 import { Book } from '../../shared/book';
 import { BookStoreService } from '../../shared/book-store.service';
@@ -11,21 +11,22 @@ import { BookStoreService } from '../../shared/book-store.service';
   styleUrls: ['./book-edit.component.css']
 })
 export class BookEditComponent {
-  book$ = this.route.paramMap.pipe(
-    map(params => params.get('isbn')!),
-    switchMap(isbn => this.service.getSingle(isbn))
-  );
+  book$: Observable<Book>;
 
   constructor(
     private service: BookStoreService,
     private route: ActivatedRoute,
     private router: Router
-  ) {}
+  ) {
+    this.book$ = this.route.paramMap.pipe(
+      map(params => params.get('isbn')!),
+      switchMap(isbn => this.service.getSingle(isbn))
+    );
+  }
 
   update(book: Book) {
     this.service.update(book).subscribe(updatedBook => {
       this.router.navigate(['/books', updatedBook.isbn]);
     });
   }
-
 }

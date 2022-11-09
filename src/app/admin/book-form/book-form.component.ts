@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, Input, OnChanges } from '@angular/core';
+import { Component, Output, EventEmitter, Input, OnChanges, inject } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { Book } from '../../shared/book';
@@ -27,15 +27,13 @@ export class BookFormComponent implements OnChanges {
         Validators.required,
         isbnFormat
       ],
-      asyncValidators: this.asyncValidators.isbnExists()
+      asyncValidators: inject(AsyncValidatorsService).isbnExists()
     }),
     description: new FormControl('', { nonNullable: true }),
     published: new FormControl('', { nonNullable: true }),
     authors: this.buildAuthorsArray(['']),
     thumbnailUrl: new FormControl('', { nonNullable: true })
   });
-
-  constructor(private asyncValidators: AsyncValidatorsService) {}
 
   ngOnChanges(): void {
     if (this.book) {

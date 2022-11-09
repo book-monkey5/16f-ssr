@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 
+import { Book } from '../../shared/book';
 import { BookStoreService } from '../../shared/book-store.service';
 
 @Component({
@@ -8,7 +10,9 @@ import { BookStoreService } from '../../shared/book-store.service';
   styleUrls: ['./book-list.component.css']
 })
 export class BookListComponent {
-  books$ = this.service.getAll();
+  books$: Observable<Book[]>;
 
-  constructor(private service: BookStoreService) {}
+  constructor(private service: BookStoreService) {
+    this.books$ = this.service.getAll();
+  }
 }
