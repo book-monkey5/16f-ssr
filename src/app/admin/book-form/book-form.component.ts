@@ -11,7 +11,6 @@ import { atLeastOneValue, isbnFormat } from '../shared/validators';
   styleUrls: ['./book-form.component.css']
 })
 export class BookFormComponent implements OnChanges {
-
   @Input() book?: Book;
   @Output() submitBook = new EventEmitter<Book>();
 
