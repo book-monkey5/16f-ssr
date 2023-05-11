@@ -15,7 +15,7 @@ import { AuthInterceptor } from './shared/auth.interceptor';
     SearchComponent,
   ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    BrowserModule,
     AppRoutingModule,
     HttpClientModule,
   ],
