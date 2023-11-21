@@ -5,17 +5,27 @@
   "projects": {
     "book-monkey": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "standalone": false
+        },
+        "@schematics/angular:directive": {
+          "standalone": false
+        },
+        "@schematics/angular:pipe": {
+          "standalone": false
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "bm",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/book-monkey/browser",
+            "outputPath": "dist/book-monkey",
             "index": "src/index.html",
-            "main": "src/main.ts",
+            "browser": "src/main.ts",
             "polyfills": [
               "zone.js"
             ],
@@ -27,7 +37,15 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "server": "src/main.server.ts",
+            "prerender": {
+              "discoverRoutes": false,
+              "routesFile": "routes.txt"
+            },
+            "ssr": {
+              "entry": "server.ts"
+            }
           },
           "configurations": {
             "production": {
@@ -46,15 +64,9 @@
               "outputHashing": "all"
             },
             "development": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true
-            },
-            "prerender": {
-              "outputPath": "dist/book-monkey"
+              "sourceMap": true
             }
           },
           "defaultConfiguration": "production"
@@ -63,10 +75,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "book-monkey:build:production"
+              "buildTarget": "book-monkey:build:production"
             },
             "development": {
-              "browserTarget": "book-monkey:build:development"
+              "buildTarget": "book-monkey:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -74,7 +86,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "book-monkey:build"
+            "buildTarget": "book-monkey:build"
           }
         },
         "test": {
@@ -103,67 +115,6 @@
               "src/**/*.html"
             ]
           }
-        },
-        "server": {
-          "builder": "@angular-devkit/build-angular:server",
-          "options": {
-            "outputPath": "dist/book-monkey/server",
-            "main": "server.ts",
-            "tsConfig": "tsconfig.server.json"
-          },
-          "configurations": {
-            "production": {
-              "outputHashing": "media"
-            },
-            "development": {
-              "optimization": false,
-              "sourceMap": true,
-              "extractLicenses": false
-            },
-            "prerender": {
-              "outputPath": "dist/book-monkey-server"
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "serve-ssr": {
-          "builder": "@nguniversal/builders:ssr-dev-server",
-          "configurations": {
-            "development": {
-              "browserTarget": "book-monkey:build:development",
-              "serverTarget": "book-monkey:server:development"
-            },
-            "production": {
-              "browserTarget": "book-monkey:build:production",
-              "serverTarget": "book-monkey:server:production"
-            }
-          },
-          "defaultConfiguration": "development"
-        },
-        "prerender": {
-          "builder": "@nguniversal/builders:prerender",
-          "options": {
-            "routes": [
-              "/",
-              "/home",
-              "/books",
-              "/books/9783864909467",
-              "/books/9783864907791",
-              "/books/9783864906466",
-              "/books/9783864903571"
-            ]
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "book-monkey:build:production,prerender",
-              "serverTarget": "book-monkey:server:production,prerender"
-            },
-            "development": {
-              "browserTarget": "book-monkey:build:development",
-              "serverTarget": "book-monkey:server:development"
-            }
-          },
-          "defaultConfiguration": "production"
         }
       }
     }
