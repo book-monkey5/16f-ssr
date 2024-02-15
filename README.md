@@ -1,6 +1,6 @@
 # BookMonkey
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.0.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.0.
 
 ## Development server
 
