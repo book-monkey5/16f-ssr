@@ -8,7 +8,8 @@ import { Book } from '../../shared/book';
 @Component({
   selector: 'bm-book-details',
   templateUrl: './book-details.component.html',
-  styleUrls: ['./book-details.component.css']
+  standalone: false,
+  styleUrl: './book-details.component.css'
 })
 export class BookDetailsComponent {
   book$: Observable<Book>;

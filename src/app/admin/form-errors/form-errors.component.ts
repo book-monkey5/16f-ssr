@@ -4,7 +4,8 @@ import { FormGroupDirective } from '@angular/forms';
 @Component({
   selector: 'bm-form-errors',
   templateUrl: './form-errors.component.html',
-  styleUrls: ['./form-errors.component.css'],
+  standalone: false,
+  styleUrl: './form-errors.component.css',
 })
 export class FormErrorsComponent {
   @Input() controlName?: string;

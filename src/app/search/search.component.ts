@@ -7,7 +7,8 @@ import { BookStoreService } from '../shared/book-store.service';
 @Component({
   selector: 'bm-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css']
+  standalone: false,
+  styleUrl: './search.component.css'
 })
 export class SearchComponent {
   input$ = new Subject<string>();

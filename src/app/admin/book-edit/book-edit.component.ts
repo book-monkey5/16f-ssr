@@ -8,7 +8,8 @@ import { BookStoreService } from '../../shared/book-store.service';
 @Component({
   selector: 'bm-book-edit',
   templateUrl: './book-edit.component.html',
-  styleUrls: ['./book-edit.component.css']
+  standalone: false,
+  styleUrl: './book-edit.component.css'
 })
 export class BookEditComponent {
   book$: Observable<Book>;
